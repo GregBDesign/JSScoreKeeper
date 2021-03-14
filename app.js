@@ -37,21 +37,31 @@ resetButton = () => {
     twoScore = 0;
     playOneScore.innerText = oneScore;
     playTwoScore.innerText = twoScore;
+    playOneScore.classList.remove('has-text-success', 'has-text-danger');
+    playTwoScore.classList.remove('has-text-success', 'has-text-danger');
     for(let i = 0; i < 2; i++){
-        remove[i].classList.remove('remove');
+        remove[i].disabled = false;    
     }
 }
 
 reset.addEventListener('click', resetButton);
 
 scoreGoalFind.addEventListener('change', function(){
-    scoreVal = parseInt(scoreGoalFind.options[scoreGoalFind.selectedIndex].value);
+    scoreVal = parseInt(this.value);
+    resetButton();
 })
 
 checkEndScore = () => {
-    if(scoreVal === (oneScore || twoScore)){
+    if(scoreVal == oneScore || scoreVal == twoScore){
         for(let i = 0; i < 2; i++){
-        remove[i].classList.add('remove');
+        remove[i].disabled = true;
+        if(scoreVal == oneScore){
+            playOneScore.classList.add('has-text-success');
+            playTwoScore.classList.add('has-text-danger');
+        } else {
+            playOneScore.classList.add('has-text-danger');
+            playTwoScore.classList.add('has-text-success');
+        }
         }
     }
 }

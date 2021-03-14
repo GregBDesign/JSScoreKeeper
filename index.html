@@ -2,27 +2,50 @@
 <html>
     <head>
         <title>Score Keeper</title>
-        <link href="styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     </head>
     <body>
-        <section id="topSection">
-            <h1>Ping Pong Score Keeper</h1>
-            <h2><span id="playOne">0</span> to <span id="playTwo">0</span></h2>
-            <p>Use the buttons below to keep score</p>
-            <label for="scoreGoal">Playing To</label>
-            <select id="gameMax" name="scoreGoal">
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-        </section>
-        <section>
-            <button class="incrementBtn" id="plusPlayOne" value="plusPlayOne">+1 Player One</button>
-            <button class="incrementBtn" id="plusPlayTwo" value="plusPlayTwo">+1 Player Two</button>
-            <button id="reset" value="reset">Reset</button>
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-half is-offset-one-quarter">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="pingpong.jpg">
+                                </figure>
+                            </div>
+                            <header class="card-header">
+                            <p class="card-header-title">
+                                Ping Pong Score Keeper
+                            </p>
+                            </header>
+                            <div class="card-content">
+                            <div class="content">
+                                <h1 class="title is-1"><span id="playOne">0</span> to <span id="playTwo">0</span></h1>
+                                <p class="subtitle">Use the buttons below to keep score</p>
+                                <label for="gameMax" class="label is-large is-inline">Playing To:</label>
+                                <div class="select is-rounded">
+                                    <select id="gameMax" name="scoreGoal">
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+                            <footer class="card-footer">
+                                <button class="is-primary button card-footer-item incrementBtn" id="plusPlayOne">+1 Player One</button>
+                                <button class="is-info button card-footer-item incrementBtn" id="plusPlayTwo">+1 Player Two</button>
+                                <button class="is-danger button card-footer-item" id="reset">Reset</button>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <script src='app.js'></script>
     </body>
