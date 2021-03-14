@@ -1,44 +1,46 @@
-//Score display
-const playOneScore = document.querySelector('#playOne');
-const playTwoScore = document.querySelector('#playTwo');
+// player one obj
+const playerOne = {
+    score: 0,
+    playerScore: document.querySelector('#playOne'),
+    incPlayOne: document.querySelector('#plusPlayOne')
+}
+
+// player two obj
+const playerTwo = {
+    score: 0,
+    playerScore: document.querySelector('#playTwo'),
+    incPlayTwo: document.querySelector('#plusPlayTwo')
+}
 
 //Max Score
 const scoreGoalFind = document.querySelector('#gameMax');
 let scoreVal = 5;
 
 //Buttons
-const incPlayOne = document.querySelector('#plusPlayOne');
-const incPlayTwo = document.querySelector('#plusPlayTwo');
 const remove = document.querySelectorAll('.incrementBtn');
 const reset = document.querySelector('#reset');
 
-var oneScore = 0;
-var twoScore = 0;
-
-increment = (val) => {
-    val++;
-    return val;
+let increment = function(player, opponent){
+    player.score++;
+    player.playerScore.innerText = player.score;
 }
 
-incPlayOne.addEventListener('click', function(){
-    oneScore = increment(oneScore);
-    playOneScore.innerText = oneScore;
+playerOne.incPlayOne.addEventListener('click', function(){
+    increment(playerOne, playerTwo);
     checkEndScore();
 })
 
-incPlayTwo.addEventListener('click', function(){
-    twoScore = increment(twoScore);
-    playTwoScore.innerText = twoScore;
+playerTwo.incPlayTwo.addEventListener('click', function(){
+    increment(playerTwo, playerOne);
     checkEndScore();
 })
 
 resetButton = () => {
-    oneScore = 0;
-    twoScore = 0;
-    playOneScore.innerText = oneScore;
-    playTwoScore.innerText = twoScore;
-    playOneScore.classList.remove('has-text-success', 'has-text-danger');
-    playTwoScore.classList.remove('has-text-success', 'has-text-danger');
+    for(let p of [playerOne, playerTwo]){
+        p.score = 0;
+        p.playerScore.innerText = p.score;
+        p.playerScore.classList.remove('has-text-success', 'has-text-danger');
+    }
     for(let i = 0; i < 2; i++){
         remove[i].disabled = false;    
     }
@@ -52,18 +54,16 @@ scoreGoalFind.addEventListener('change', function(){
 })
 
 checkEndScore = () => {
-    if(scoreVal == oneScore || scoreVal == twoScore){
+    if(scoreVal == playerOne.score || scoreVal == playerTwo.score){
         for(let i = 0; i < 2; i++){
         remove[i].disabled = true;
-        if(scoreVal == oneScore){
-            playOneScore.classList.add('has-text-success');
-            playTwoScore.classList.add('has-text-danger');
+        if(scoreVal == playerOne.score){
+            playerOne.playerScore.classList.add('has-text-success');
+            playerTwo.playerScore.classList.add('has-text-danger');
         } else {
-            playOneScore.classList.add('has-text-danger');
-            playTwoScore.classList.add('has-text-success');
+            playerOne.playerScore.classList.add('has-text-danger');
+            playerTwo.playerScore.classList.add('has-text-success');
         }
         }
     }
 }
-
-
