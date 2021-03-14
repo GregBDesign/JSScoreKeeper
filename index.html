@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Score Keeper</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <section id="topSection">
+            <h1>Ping Pong Score Keeper</h1>
+            <h2><span id="playOne">0</span> to <span id="playTwo">0</span></h2>
+            <p>Use the buttons below to keep score</p>
+            <label for="scoreGoal">Playing To</label>
+            <select id="gameMax" name="scoreGoal">
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </section>
+        <section>
+            <button class="incrementBtn" id="plusPlayOne" value="plusPlayOne">+1 Player One</button>
+            <button class="incrementBtn" id="plusPlayTwo" value="plusPlayTwo">+1 Player Two</button>
+            <button id="reset" value="reset">Reset</button>
+        </section>
+        <script src='app.js'></script>
+    </body>
+</html>
